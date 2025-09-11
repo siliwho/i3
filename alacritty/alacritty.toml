@@ -1,0 +1,47 @@
+# Alacritty Configuration File
+
+[window]
+# Window padding
+padding = { x = 10, y = 10 }
+# decorations = "full" # "full", "none"
+opacity = 0.95
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[font]
+# You can change the font family. Ensure it's installed on your system.
+# A "Nerd Font" is recommended for icons and glyphs.
+normal = { family = "JetBrains Mono NL", style = "Regular" }
+bold = { family = "JetBrains Mono NL", style = "Bold" }
+italic = { family = "JetBrains Mono NL", style = "Italic" }
+size = 11.0
+
+# Tokyo Night Theme Colors
+[colors]
+primary = { background = "#1a1b26", foreground = "#c0caf5" }
+cursor = { text = "#1a1b26", cursor = "#c0caf5" }
+
+# Normal colors
+[colors.normal]
+black = "#15161E"
+red = "#f7768e"
+green = "#9ece6a"
+yellow = "#e0af68"
+blue = "#7aa2f7"
+magenta = "#bb9af7"
+cyan = "#7dcfff"
+white = "#a9b1d6"
+
+# Bright colors
+[colors.bright]
+black = "#414868"
+red = "#f7768e"
+green = "#9ece6a"
+yellow = "#e0af68"
+blue = "#7aa2f7"
+magenta = "#bb9af7"
+cyan = "#7dcfff"
+white = "#c0caf5"
+

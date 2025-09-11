@@ -1,0 +1,24 @@
+# Ignore everything
+*
+*/
+
+# --- Keep these custom configs ---
+!/nvim/
+!/nvim/**
+!/i3/
+!/i3/**
+!/i3blocks/
+!/i3blocks/**
+!/ranger/
+!/ranger/**
+!/kitty/
+!/kitty/**
+!/alacritty/
+!/alacritty/**
+
+# Optionally keep custom themes/scripts
+!*.sh
+!*.md
+
+!.gitignore
+

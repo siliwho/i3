@@ -1,0 +1,54 @@
+# Global separator color
+separator_block_width=15
+color=#414868
+
+[pomo]
+command=~/bin/timer.sh
+interval=1
+color=#f7768e
+
+[ip]
+command=echo " $(hostname -I | cut -d' ' -f1 | xargs)"
+interval=1
+color=#7aa2f7
+
+[battery]
+command=~/bin/i3blocks_battery.sh
+interval=10
+color=#9ece6a
+
+[cpu_usage]
+label=
+command=~/bin/i3blocks-contrib/cpu_usage
+interval=1
+color=#d19a49
+
+[ram]
+command=echo -n ' '; ~/bin/i3blocks-contrib/memory | grep -E -o '^[0-9]+.[0-9]G'
+interval=30
+color=#bb9af7
+
+[disk-home]
+command=echo -n ' '; df -h -l --output='avail' "$HOME" | grep -E -o '[0-9]+G'
+interval=30
+color=#7dcfff
+
+[volume-pulseaudio]
+command=~/bin/i3_volume.sh
+interval=1
+signal=10
+color=#f7768e
+
+# Separated Date block
+[date]
+command=DATEFTM='+%Y-%m-%d' ~/bin/i3blocks-contrib/rofi-calendar
+label=
+interval=30
+color=#7aa2f7
+
+# Separated Time block
+[time]
+command=DATEFTM='+%H:%M:%S' ~/bin/i3blocks-contrib/rofi-calendar
+label=
+interval=1
+color=#9ece6a
