@@ -3,8 +3,8 @@
 */
 
 # --- Keep these custom configs ---
-!/nvim/
-!/nvim/**
+# !/nvim/
+# !/nvim/**
 !/i3/
 !/i3/**
 !/i3blocks/
