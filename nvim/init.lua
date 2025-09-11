@@ -1,2 +1,3 @@
-require("sphuro.core")
-require("sphuro.lazy")
+require("siliwho.core")
+require("siliwho.lazy")
+require("siliwho.competitive")

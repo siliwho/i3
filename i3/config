@@ -50,6 +50,10 @@ exec_always --no-startup-id alternating_layouts.py
 # screenshot tool
 exec_always --no-startup-id flameshot
 
+# Start picom compositor
+exec_always --no-startup-id picom
+
+
 # gdrive sync
 exec_always --no-startup-id i3_isync.sh
 
