@@ -15,6 +15,9 @@
 !/kitty/**
 !/alacritty/
 !/alacritty/**
+!/fastfetch/
+!/fastfetch/**
+
 
 # Optionally keep custom themes/scripts
 !*.sh
