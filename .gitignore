@@ -13,6 +13,8 @@
 !/ranger/**
 !/kitty/
 !/kitty/**
+!/nvim/
+!/nvim/**
 !/alacritty/
 !/alacritty/**
 !/fastfetch/
