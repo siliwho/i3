@@ -19,6 +19,8 @@
 !/alacritty/**
 !/fastfetch/
 !/fastfetch/**
+!/bin/
+!/bin/**
 
 
 # Optionally keep custom themes/scripts

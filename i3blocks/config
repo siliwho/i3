@@ -52,3 +52,4 @@ command=DATEFTM='+%H:%M:%S' ~/bin/i3blocks-contrib/rofi-calendar
 label=
 interval=1
 color=#9ece6a
+

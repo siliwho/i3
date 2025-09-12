@@ -104,8 +104,8 @@ bindsym $mod+k focus up
 bindsym $mod+l focus right
 
 # Start timer
-bindsym $mod+F1 exec --no-startup-id "~/bin/timer.sh 1500"
-bindsym $mod+F2 exec --no-startup-id "~/bin/timer.sh 300"
+bindsym $mod+F2 exec --no-startup-id "~/bin/timer.sh 1500"
+bindsym $mod+F1 exec --no-startup-id "~/bin/timer.sh 300"
 
 # move focused window
 bindsym $mod+Shift+H move left
@@ -116,6 +116,8 @@ bindsym $mod+Shift+L move right
 bindsym $mod+Tab workspace next
 bindsym $mod+Shift+Tab focus prev
 
+#betterlockscreen
+bindsym $mod+Escape exec betterlockscreen -l
 
 # Fullscreen screenshot → save to file
 bindsym Print exec scrot '/home/siliwho/Pictures/screenshots/%Y-%m-%d_%H-%M-%S.png' && notify-send "Screenshot taken"
