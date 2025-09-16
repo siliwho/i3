@@ -1,31 +1,23 @@
 #!/usr/bin/env perl
-#
-# Copyright 2014 Pierre Mavro <deimos@deimos.fr>
-# Copyright 2014 Vivien Didelot <vivien@didelot.org>
-# Copyright 2014 Andreas Guldstrand <andreas.guldstrand@gmail.com>
-#
-# Licensed under the terms of the GNU GPL v3, or any later version.
-
 use strict;
 use warnings;
 use utf8;
 use Getopt::Long;
 
-# default values
+# thresholds
 my $t_warn = $ENV{T_WARN} // 50;
 my $t_crit = $ENV{T_CRIT} // 80;
 my $cpu_usage = -1;
 my $decimals = $ENV{DECIMALS} // 2;
 my $label = $ENV{LABEL} // "";
-my $color_normal = $ENV{COLOR_NORMAL} // "#e0af68";
-my $color_warn = $ENV{COLOR_WARN} // "#AAAAAA";
-my $color_crit = $ENV{COLOR_CRIT} // "#AAAAAA";
+
+# --- keep env colors (optional fallback, but won’t override config) ---
+my $color_normal = $ENV{COLOR_NORMAL} // undef;
+my $color_warn   = $ENV{COLOR_WARN}   // undef;
+my $color_crit   = $ENV{COLOR_CRIT}   // undef;
 
 sub help {
     print "Usage: cpu_usage [-w <warning>] [-c <critical>] [-d <decimals>]\n";
-    print "-w <percent>: warning threshold to become yellow\n";
-    print "-c <percent>: critical threshold to become red\n";
-    print "-d <decimals>:  Use <decimals> decimals for percentage (default is $decimals) \n"; 
     exit 0;
 }
 
@@ -35,12 +27,12 @@ GetOptions("help|h" => \&help,
            "d=i"    => \$decimals,
 );
 
-# Get CPU usage
-$ENV{LC_ALL}="en_US"; # if mpstat is not run under en_US locale, things may break, so make sure it is
+# get CPU usage
+$ENV{LC_ALL}="en_US";
 open (MPSTAT, 'mpstat 1 1 |') or die;
 while (<MPSTAT>) {
     if (/^.*\s+(\d+\.\d+)[\s\x00]?$/) {
-        $cpu_usage = 100 - $1; # 100% - %idle
+        $cpu_usage = 100 - $1;
         last;
     }
 }
@@ -48,19 +40,19 @@ close(MPSTAT);
 
 $cpu_usage eq -1 and die 'Can\'t find CPU information';
 
-# Print short_text, full_text
+# print text
 print "${label}";
 printf "%.${decimals}f%%\n", $cpu_usage;
 print "${label}";
 printf "%.${decimals}f%%\n", $cpu_usage;
 
-# Print color, if needed
-if ($cpu_usage >= $t_crit) {
+# ---- optional: only print color if you want thresholds to override ----
+# Comment this block if you want 100% theme-driven colors
+if ($cpu_usage >= $t_crit && defined $color_crit) {
     print "${color_crit}\n";
-} elsif ($cpu_usage >= $t_warn) {
+} elsif ($cpu_usage >= $t_warn && defined $color_warn) {
     print "${color_warn}\n";
-} else {
+} elsif (defined $color_normal) {
     print "${color_normal}\n";
 }
 
-exit 0;
