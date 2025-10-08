@@ -40,17 +40,13 @@ exec_always --no-startup-id flameshot
 # Start picom compositor
 exec_always --no-startup-id picom
 
-#notifications
-exec_always --no-startup-id dunst
-
 
 # gdrive sync
 exec_always --no-startup-id i3_isync.sh
 
 # Set wallpaper
-# exec_always --no-startup-id feh --bg-scale /home/siliwho/Downloads/1006667.jpg
+exec_always --no-startup-id feh --bg-scale /home/siliwho/Downloads/1006667.jpg
 
-exec_always --no-startup-id nitrogen --restore
 # start composite manager picom (compton fork)
 # It's nice, but bugs...
 # exec_always --no-startup-id i3_picom.sh
@@ -63,9 +59,9 @@ new_window pixel 1
 # Won't wrap around if you e.g. press left when you are at most left
 force_focus_wrapping yes
 
-client.focused          #81a1c1 #81a1c1 #eceff4 #81a1c1 #81a1c1
-client.focused_inactive #4c566a #4c566a #eceff4 #4c566a #4c566a
-client.unfocused        #4c566a #4c566a #eceff4 #4c566a #4c566a
+client.focused          #7aa2f7 #7aa2f7 #c0caf5 #7aa2f7 #7aa2f7
+client.focused_inactive #414868 #414868 #a9b1d6 #414868 #414868
+client.unfocused        #414868 #414868 #a9b1d6 #414868 #414868
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -108,8 +104,8 @@ bindsym $mod+Shift+J move down
 bindsym $mod+Shift+K move up
 bindsym $mod+Shift+L move right
 
-# bindsym $mod+Tab workspace next
-# bindsym $mod+Shift+Tab focus prev
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab focus prev
 
 #betterlockscreen
 bindsym $mod+Escape exec betterlockscreen -l
@@ -145,9 +141,6 @@ set $WS2 2
 set $WS3 3
 set $WS4 4
 set $WS5 5
-set $WS6 6
-set $WS7 7
-set $WS8 8
 
 # switch workspace
 bindsym $mod+1 workspace $WS1
@@ -155,9 +148,6 @@ bindsym $mod+2 workspace $WS2
 bindsym $mod+3 workspace $WS3
 bindsym $mod+4 workspace $WS4
 bindsym $mod+5 workspace $WS5
-bindsym $mod+6 workspace $WS6
-bindsym $mod+7 workspace $WS7
-bindsym $mod+8 workspace $WS8
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $WS1
@@ -165,9 +155,6 @@ bindsym $mod+Shift+2 move container to workspace $WS2
 bindsym $mod+Shift+3 move container to workspace $WS3
 bindsym $mod+Shift+4 move container to workspace $WS4
 bindsym $mod+Shift+5 move container to workspace $WS5
-bindsym $mod+Shift+6 move container to workspace $WS6
-bindsym $mod+Shift+7 move container to workspace $WS7
-bindsym $mod+Shift+8 move container to workspace $WS8
 
 # restart i3 inplace (preserves layout/session)
 bindsym $mod+Shift+R restart
@@ -201,22 +188,6 @@ bindsym XF86AudioLowerVolume    exec --no-startup-id pactl set-sink-volume @DEFA
 bindsym XF86AudioRaiseVolume    exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMute           exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
 
-# Brightness control -- UPDATED FOR INSTANT REFRESH
-bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%- && pkill -RTMIN+11 i3blocks
-bindsym XF86MonBrightnessUp   exec --no-startup-id brightnessctl set +5% && pkill -RTMIN+11 i3blocks
-
-# Switch current container to tabbed layout
-bindsym $mod+Shift+t layout tabbed
-
-# Switch to stacked layout
-bindsym $mod+Shift+s layout stacked
-
-# Back to split tiling
-bindsym $mod+Shift+u layout toggle split
-
-bindsym $mod+Tab focus right
-bindsym $mod+Shift+Tab focus left
-
 # Info bar at top
 bar {
 	position top
@@ -233,14 +204,15 @@ bar {
     tray_padding 1
 
     colors {
-        background #2e3440
-        statusline #eceff4
-        separator #4c566a
+        background $bg
+        statusline $fg
+        separator $gray
 
-        focused_workspace  #81a1c1 #81a1c1 #2e3440
-        active_workspace   #81a1c1 #4c566a #eceff4
-        inactive_workspace #2e3440 #2e3440 #e5e9f0
-        urgent_workspace   #bf616a #bf616a #eceff4
+        # workspace id, border, background, text
+        focused_workspace  $blue $blue $bg
+        active_workspace   $blue $gray $fg
+        inactive_workspace $bg $bg $white
+        urgent_workspace   $red $red $fg
     }
 }
 

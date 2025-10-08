@@ -23,6 +23,8 @@
 !/betterlockscreen/**
 !/bin/
 !/bin/**
+!/theme/
+!/theme/**
 
 
 # Optionally keep custom themes/scripts
@@ -32,3 +34,5 @@
 !.gitignore
 !README.md
 !2025-09-11_13-47-41.png
+!.vimrc
+!*.png
